@@ -20,11 +20,16 @@ module.exports = function(app) {
   });
 
   app.post(baseUrl, function(req, res) {
-    var note = new Note(req.body);
+    /*console.log("note name: " + req.body.noteName);
+    var note = new Note({
+      noteName: req.body.noteName,
+      noteBody: req.body.noteBody
+    });
     note.save(function(err, resNote) { //resNote - don't use res or note
       if (err) return resNote.status(500).json(err);
       return res.send(resNote);
-    });
+    });*/
+    res.send(req.body);
   });
 
   app.get(baseUrl + '/:id', function(req, res) {

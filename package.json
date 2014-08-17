@@ -19,7 +19,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-express-server": "^0.4.19",
     "grunt-mocha-test": "^0.11.0",
-    "grunt-shell": "^0.7.0"
+    "grunt-shell-spawn": "^0.3.0"
   },
   "dependencies": {
     "body-parser": "^1.6.3",

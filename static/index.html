@@ -4,13 +4,31 @@
   <meta charset="UTF-8">
   <title>Notes</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
   <h1>Notes</h1>
-  <form>
-    <input type="text" placeholder="note name"></input>
-    <input type="text" placeholder="note contents" class="noteContents"></input>
-    <button>Submit Note</button>
+  <form action="/api/v_0_0_1/notes" method="post" id="notesForm">
+    <input type="text" placeholder="note name" id="noteName" name="noteName"></input>
+    <input type="text" placeholder="note contents" id="noteContents" name="noteBody"></input>
+    <input type="submit" value="Submit note"/>
   </form>
+
+<!--
+  <script>
+  $("#notesForm").submit(function(event) {
+    event.preventDefault();
+
+    var $form = $(this),
+    name = $form.find("#noteName").val(),
+    contents = $form.find("#noteContents").val(),
+    url = "/";
+
+    var posting = $.post(url, {name:name, contents:contents});
+  });
+
+  </script>
+-->
+
 </body>
 </html>

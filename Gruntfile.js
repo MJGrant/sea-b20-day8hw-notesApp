@@ -7,7 +7,6 @@ module.exports = function(grunt) {
     express: {
       options: {
         cmd: process.argv[0],
-        port: 3000
       },
       dev: {
         options: {
@@ -21,7 +20,7 @@ module.exports = function(grunt) {
         options: {
           reporter: 'spec'
         },
-          src: ['test/**/*.js']
+          src: ['test/mocha/*.js']
       }
     },
 
@@ -30,18 +29,32 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js']
       },
       scripts: {
-        files: ['**/*.js']
+        files: ['server.js','routes/*.js']
+      }
+    }/*,*/
+
+/*
+    shell: {
+      mongo: {
+        command: 'mongod',
+        options: {
+          async:true
+          //http://stackoverflow.com/questions/17871833/start-mongodb-from-within-a-grunt-task
+        }
       }
     }
+    */
   });
 
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  //grunt.loadNpmTasks('grunt-shell-spawn');
 
   grunt.registerTask('default', [
+    //'shell',
     'express:dev',
-    'mochaTest',
+    //'mochaTest',
     'watch'
     ]);
 };
