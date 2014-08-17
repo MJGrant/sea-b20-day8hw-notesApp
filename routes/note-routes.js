@@ -45,8 +45,6 @@ module.exports = function(app) {
   });
 
   app.delete(baseUrl, function (req, res) { //delete all
-    //read the request body to find the id that you want to delete
-    //and then delete it
     Note.remove({}, function(err, resNote) {
       if (err) return res.status(500).json(err);
       return res.status(200).json({'allmsg':'deleted'});

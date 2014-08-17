@@ -15,7 +15,7 @@ describe('noteRoutes', function() {
 
   it('creates a new note', function (done) {
     chai.request(url)
-      .post('/api/v_0_0_1/notes') //post is for new notes
+      .post('/api/v_0_0_1/notes')
       .req(function(req) {
         req.send({"noteBody":"a new note"});
       })
