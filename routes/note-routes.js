@@ -20,16 +20,12 @@ module.exports = function(app) {
   });
 
   app.post(baseUrl, function(req, res) {
-    /*console.log("note name: " + req.body.noteName);
-    var note = new Note({
-      noteName: req.body.noteName,
-      noteBody: req.body.noteBody
-    });
+    console.log("note name: " + req.body.noteName);
+    var note = new Note(req.body);
     note.save(function(err, resNote) { //resNote - don't use res or note
       if (err) return resNote.status(500).json(err);
       return res.send(resNote);
-    });*/
-    res.send(req.body);
+    });
   });
 
   app.get(baseUrl + '/:id', function(req, res) {
@@ -37,7 +33,7 @@ module.exports = function(app) {
       if (err) return res.status(500).json(err);
       return res.json(note);
     });
-  }); //findOne is for finding one of an array
+  });
 
   app.put(baseUrl + '/:id', function (req, res) {
     var note = req.body;
@@ -48,12 +44,23 @@ module.exports = function(app) {
     });
   });
 
-  app.delete(baseUrl + '/:id', function (req, res) {
+  app.delete(baseUrl, function (req, res) { //delete all
+    //read the request body to find the id that you want to delete
+    //and then delete it
+    Note.remove({}, function(err, resNote) {
+      if (err) return res.status(500).json(err);
+      return res.status(200).json({'allmsg':'deleted'});
+    });
+  });
+
+  app.delete(baseUrl + '/:id', function (req, res) { //delete specific note by id
     Note.remove({'_id' : req.params.id}, function(err, resNote) {
       if (err) return res.status(500).json(err);
       return res.status(200).json({'msg':'deleted'});
     });
   });
+
+
 };
 
 //stretch goal:

@@ -8,27 +8,26 @@
 </head>
 <body>
   <h1>Notes</h1>
-  <form action="/api/v_0_0_1/notes" method="post" id="notesForm">
+  <!-- add a new note -->
+  <form action="/api/v_0_0_1/notes" 
+    enctype="application/x-www-form-urlencoded" 
+    method="post" 
+    id="notesForm">
     <input type="text" placeholder="note name" id="noteName" name="noteName"></input>
-    <input type="text" placeholder="note contents" id="noteContents" name="noteBody"></input>
-    <input type="submit" value="Submit note"/>
+    <input type="text" placeholder="note contents" class="noteEntryLong" name="noteBody"></input>
+    <input type="submit" value="Submit Note"/>
   </form>
+  <br><br>
 
-<!--
-  <script>
-  $("#notesForm").submit(function(event) {
-    event.preventDefault();
+  <!-- view all the existing notes -->
+  <form action="/api/v_0_0_1/notes"  
+    enctype="application/x-www-form-urlencoded" 
+    method="get" 
+    id="getForm">
+    <input type="submit" value="View All Notes"/>
+  </form>
+  <br>
 
-    var $form = $(this),
-    name = $form.find("#noteName").val(),
-    contents = $form.find("#noteContents").val(),
-    url = "/";
-
-    var posting = $.post(url, {name:name, contents:contents});
-  });
-
-  </script>
--->
-
+  </form>
 </body>
 </html>

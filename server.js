@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/static'));
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/notes-development');
 //when on heroku, url will be used
 
-app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false }));
 require('./routes/note-routes')(app); //require note-routes (which is exported from same named file) 
 
 var server = http.createServer(app);
