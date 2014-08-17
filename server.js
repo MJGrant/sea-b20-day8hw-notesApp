@@ -5,6 +5,8 @@ var http = require('http');
 
 var app = express();
 
+app.use(express.static(__dirname + '/static'));
+
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/notes-development');
 //when on heroku, url will be used
 
