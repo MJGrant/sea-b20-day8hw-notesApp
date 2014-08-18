@@ -7,8 +7,14 @@ var app = express();
 
 app.use(express.static(__dirname + '/static'));
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/notes-development');
 //when on heroku, url will be used
+mongoose.connect('mongodb://heroku_app28604176:ic5gesf06v1ggj60usp6counvu@ds063449.mongolab.com:63449/heroku_app28604176' || 'mongodb://localhost/notes-development');
+
+//the gigantic long url was formerly:
+//process.env.MONGO_URL
+
+//add mongodb add-on to heroku
+//mongo labs
 
 app.use(bodyparser.json()); //necessary for mocha chai tests
 app.use(bodyparser.urlencoded({ extended: false })); //necessary for front end html
