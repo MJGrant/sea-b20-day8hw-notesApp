@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+  <h1>Notes</h1>
+  <!-- add a new note -->
+  <form action="/api/v_0_0_1/notes" 
+    enctype="application/x-www-form-urlencoded" 
+    method="post" 
+    id="notesForm">
+    <input type="text" placeholder="note name" id="noteName" name="noteName"></input>
+    <input type="text" placeholder="note contents" class="noteEntryLong" name="noteBody"></input>
+    <input type="submit" value="Submit Note"/>
+  </form>
+  <br><br>
+
+  <!-- view all the existing notes -->
+  <form action="/api/v_0_0_1/notes"  
+    enctype="application/x-www-form-urlencoded" 
+    method="get" 
+    id="getForm">
+    <input type="submit" value="View All Notes"/>
+  </form>
+  <br>
+
+  </form>
+</body>
+</html>
